@@ -1,0 +1,14 @@
+视频: com.heytap.yoli
+音乐: com.heytap.music
+健康: com.heytap.health
+阅读: com.heytap.reader
+OPPO商城: com.oppo.store
+一加社区: com.oneplus.bbs
+浏览器: com.heytap.browser
+SIM卡工具包: com.android.stk
+智能家居: com.heytap.smarthome
+主题商店: com.heytap.themestore
+家庭空间: com.coloros.familyguard
+小布助手: com.heytap.speechassist
+查找: com.coloros.findphone.client2
+手机搬家: com.coloros.backuprestore

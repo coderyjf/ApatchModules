@@ -11,4 +11,5 @@ SIM卡工具包: com.android.stk
 家庭空间: com.coloros.familyguard
 小布助手: com.heytap.speechassist
 查找: com.coloros.findphone.client2
+快应用: com.nearme.instant.platform
 手机搬家: com.coloros.backuprestore

@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'FreezeApplication/**'
+      - '!FreezeApplication/app.txt'
 
 jobs:
   build:

@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'BanAdvertising/**'
+      - '!BanAdvertising/system/etc/hosts'
 
 jobs:
   build:

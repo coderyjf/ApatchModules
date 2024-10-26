@@ -1,0 +1,49 @@
+name: FreezeApplication Module Release
+on: 
+  workflow_dispatch:
+  push:
+    paths:
+      - 'FreezeApplication/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Extract version from module.prop
+        run: |
+          if [ -f "FreezeApplication/module.prop" ]; then
+            version=$(grep '^version=' FreezeApplication/module.prop | cut -d'=' -f2)
+            echo "version=${version}" >> $GITHUB_ENV
+          else
+            echo "version=unknown" >> $GITHUB_ENV
+          fi
+
+      - name: Create ZIP file
+        run: |
+          if [ "${{ env.version }}" != "unknown" ]; then
+            zip -r "FreezeApplication_${{ env.version }}.zip" FreezeApplication/*
+            echo "zip_created=true" >> $GITHUB_ENV           
+          else
+            echo "zip_created=false" >> $GITHUB_ENV
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@master
+        if: env.zip_created == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.version }}
+          files: |
+            "FreezeApplication_${{ env.version }}.zip"
+
+
+      - name: Delete workflow runs 
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          retain_days: 0
+          keep_minimum_runs: 2

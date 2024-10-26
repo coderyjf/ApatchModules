@@ -1,6 +1,6 @@
 id=freeze_application
 name=FreezeApplication
-version=v0.0.1_Test
+version=v0.0.1_TEST
 versionCode=20241023
 author=chester
 description=Freeze disables some specified applications

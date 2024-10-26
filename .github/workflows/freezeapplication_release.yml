@@ -25,7 +25,8 @@ jobs:
       - name: Create ZIP file
         run: |
           if [ "${{ env.version }}" != "unknown" ]; then
-            zip -r "FreezeApplication_${{ env.version }}.zip" FreezeApplication/*
+            cd FreezeApplication
+            zip -r "FreezeApplication_${{ env.version }}.zip" ./*
             echo "zip_created=true" >> $GITHUB_ENV           
           else
             echo "zip_created=false" >> $GITHUB_ENV
@@ -39,7 +40,7 @@ jobs:
         with:
           tag_name: ${{ env.version }}
           files: |
-            "FreezeApplication_${{ env.version }}.zip"
+            FreezeApplication/FreezeApplication_${{ env.version }}.zip
 
 
       - name: Delete workflow runs 
